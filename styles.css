@@ -42,42 +42,49 @@
   --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.3);
   --shadow-md: 0 10px 15px rgba(0, 0, 0, 0.4);
   --shadow-hover: 0 20px 25px rgba(0, 0, 0, 0.5);
-  --white: #1e1e1e; /* Adjust specific contexts if needed */
+  --white: #1e1e1e;
+  /* Adjust specific contexts if needed */
+  color-scheme: dark;
 }
 
 /* Specific overrides for Dark Mode to ensure contrast */
 [data-theme="dark"] header {
-    background-color: rgba(30, 30, 30, 0.9);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  background-color: rgba(30, 30, 30, 0.8);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 [data-theme="dark"] .btn-primary {
-    background-color: var(--accent-color);
-    color: #121212;
+  background-color: var(--accent-color);
+  color: #121212;
 }
 
 [data-theme="dark"] .btn-primary:hover {
-    background-color: var(--accent-hover);
+  background-color: var(--accent-hover);
 }
 
 [data-theme="dark"] .btn-outline {
-    color: var(--text-primary);
-    border-color: var(--text-primary);
+  color: var(--text-primary);
+  border-color: var(--text-primary);
 }
 
 [data-theme="dark"] .btn-outline:hover {
-    background-color: var(--text-primary);
-    color: var(--bg-color);
+  background-color: var(--text-primary);
+  color: var(--bg-color);
 }
 
 [data-theme="dark"] .tab-btn.active {
-    background-color: var(--accent-color);
-    border-color: var(--accent-color);
-    color: #121212;
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  color: #121212;
 }
 
 [data-theme="dark"] footer {
-    background-color: #0a0a0a;
+  background-color: #0a0a0a;
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] footer p {
+  color: rgba(255, 255, 255, 0.7);
 }
 
 
@@ -185,13 +192,147 @@ section {
   color: var(--white);
 }
 
+.btn-fade-effect {
+  border: 2px solid var(--text-primary) !important;
+  /* Fully distinct border */
+  box-shadow: 0 0 25px rgba(45, 64, 84, 0.3);
+  /* Strong initial glow */
+  transition: all 0.4s ease;
+}
+
+.btn-fade-effect:hover {
+  border-color: var(--text-primary) !important;
+  box-shadow: 0 0 50px rgba(45, 64, 84, 0.6);
+  /* Maximum fade effect */
+  background-color: transparent;
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .btn-fade-effect {
+  border-color: var(--text-primary) !important;
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.15);
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .btn-fade-effect:hover {
+  border-color: var(--text-primary) !important;
+  box-shadow: 0 0 50px rgba(255, 255, 255, 0.4);
+  color: var(--white);
+}
+
+@keyframes gradient-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.btn-shop {
+  padding: 0.5rem 1.75rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  background: linear-gradient(300deg, var(--text-primary), #4a5d6e, #5a8f73, var(--text-primary));
+  background-size: 300% 300%;
+  animation: gradient-flow 3s ease infinite;
+  color: var(--bg-color);
+  position: relative;
+  overflow: hidden;
+  border-radius: 50px;
+  border: none;
+  z-index: 1;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-shop:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 7px 20px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
+
+/* Remove old pseudo-element shine if we want purely gradient focus, 
+   or keep it subtle. Let's remove it for clearer focus on the gradient flow. */
+.btn-shop::before {
+  content: none;
+}
+
+[data-theme="dark"] .btn-shop {
+  background: linear-gradient(300deg, var(--accent-color), #5a8f73, #4a5d6e, var(--accent-color));
+  background-size: 300% 300%;
+  animation: gradient-flow 3s ease infinite;
+  color: #121212;
+  box-shadow: 0 0 15px rgba(123, 184, 152, 0.4);
+  /* Glow effect */
+}
+
+[data-theme="dark"] .btn-shop:hover {
+  box-shadow: 0 0 25px rgba(123, 184, 152, 0.6);
+}
+
+.btn-icon {
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-color);
+  /* Lighter border by default */
+  color: var(--text-secondary);
+}
+
+.btn-instagram {
+  position: relative;
+  overflow: hidden;
+  border: 2px solid #E1306C;
+  /* Thicker border */
+  color: #E1306C;
+  background: white;
+  margin-left: -0.5rem;
+  /* Pull closer to 'Mağaza' button */
+}
+
+.btn-instagram:hover {
+  background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+  background-origin: border-box;
+  color: white;
+  border-color: transparent;
+  box-shadow: 0 4px 15px rgba(225, 48, 108, 0.4);
+  transform: translateY(-2px) rotate(5deg);
+}
+
+#theme-toggle {
+  margin-left: 1.5rem;
+  /* Push further to the right */
+}
+
+[data-theme="dark"] .btn-instagram {
+  background: transparent;
+}
+
+[data-theme="dark"] .btn-instagram:hover {
+  background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+  background-origin: border-box;
+  color: white;
+  border-color: transparent;
+}
+
 /* Header */
 header {
   padding: var(--spacing-sm) 0;
   position: sticky;
   top: 0;
-  background-color: rgba(253, 251, 247, 0.9);
-  backdrop-filter: blur(10px);
+  background-color: rgba(253, 251, 247, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   z-index: 1000;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
@@ -392,10 +533,10 @@ nav {
 
 /* Quote Section */
 .quote-section {
-  background: linear-gradient(to bottom, var(--bg-color), var(--card-bg) 150px);
+  background: linear-gradient(to bottom, var(--bg-color), var(--card-bg) 4rem);
   border-radius: 20px;
-  margin: var(--spacing-lg) auto;
-  padding: var(--spacing-lg) var(--spacing-md);
+  margin: var(--spacing-lg) auto 0;
+  padding: 8rem var(--spacing-md) 6rem;
   text-align: center;
 }
 
@@ -407,23 +548,63 @@ nav {
 }
 
 .form-group input,
-.form-group textarea,
+.form-group textarea {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background-color: var(--white);
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
 .form-group select {
   width: 100%;
   padding: 1rem;
   border: 1px solid var(--border-color);
   border-radius: 8px;
   background-color: var(--white);
+  color: var(--text-primary);
   font-family: inherit;
   font-size: 1rem;
   outline: none;
-  transition: border-color 0.3s;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
 .form-group input:focus,
 .form-group textarea:focus,
 .form-group select:focus {
   border-color: var(--accent-color);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--text-primary);
+  opacity: 1;
+  /* Firefox defaults to lower opacity */
+}
+
+.form-group select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M2 4L6 8L10 4' stroke='%234a5d6e' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+  cursor: pointer;
+}
+
+[data-theme="dark"] .form-group select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M2 4L6 8L10 4' stroke='%23e0e0e0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+.form-group select option {
+  background-color: var(--white);
+  color: var(--text-primary);
 }
 
 /* File Upload custom style */
@@ -438,7 +619,7 @@ nav {
   background-color: var(--white);
   cursor: pointer;
   transition: all 0.3s ease;
-  color: var(--text-secondary);
+  color: var(--text-primary);
 }
 
 .file-upload-label:hover {
