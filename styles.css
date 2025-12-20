@@ -33,6 +33,54 @@
   --shadow-hover: 0 20px 25px rgba(45, 64, 84, 0.12);
 }
 
+[data-theme="dark"] {
+  --bg-color: #121212;
+  --card-bg: #1e1e1e;
+  --text-primary: #e0e0e0;
+  --text-secondary: #b0b0b0;
+  --border-color: #333333;
+  --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 10px 15px rgba(0, 0, 0, 0.4);
+  --shadow-hover: 0 20px 25px rgba(0, 0, 0, 0.5);
+  --white: #1e1e1e; /* Adjust specific contexts if needed */
+}
+
+/* Specific overrides for Dark Mode to ensure contrast */
+[data-theme="dark"] header {
+    background-color: rgba(30, 30, 30, 0.9);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .btn-primary {
+    background-color: var(--accent-color);
+    color: #121212;
+}
+
+[data-theme="dark"] .btn-primary:hover {
+    background-color: var(--accent-hover);
+}
+
+[data-theme="dark"] .btn-outline {
+    color: var(--text-primary);
+    border-color: var(--text-primary);
+}
+
+[data-theme="dark"] .btn-outline:hover {
+    background-color: var(--text-primary);
+    color: var(--bg-color);
+}
+
+[data-theme="dark"] .tab-btn.active {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: #121212;
+}
+
+[data-theme="dark"] footer {
+    background-color: #0a0a0a;
+}
+
+
 /* Global Reset & Base Styles */
 * {
   margin: 0;
