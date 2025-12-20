@@ -203,7 +203,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const currentTheme = localStorage.getItem('theme');
     if (currentTheme === 'dark') {
         document.documentElement.setAttribute('data-theme', 'dark');
-        if (themeIcon) themeIcon.className = 'fas fa-sun';
+        if (themeIcon) themeIcon.className = 'custom-sun';
         if (logoImg) logoImg.src = darkLogoPath;
     }
 
@@ -219,7 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 document.documentElement.setAttribute('data-theme', 'dark');
                 localStorage.setItem('theme', 'dark');
-                if (themeIcon) themeIcon.className = 'fas fa-sun';
+                if (themeIcon) themeIcon.className = 'custom-sun';
                 if (logoImg) logoImg.src = darkLogoPath;
             }
         });
