@@ -195,12 +195,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // Theme Toggle Logic
     const themeToggleBtn = document.getElementById('theme-toggle');
     const themeIcon = themeToggleBtn ? themeToggleBtn.querySelector('i') : null;
+    const logoImg = document.querySelector('.logo img');
+    const lightLogoPath = 'Printova/Printova Logo.png';
+    const darkLogoPath = 'Printova/Printova Logo Nightmode.png';
 
     // Check Local Storage
     const currentTheme = localStorage.getItem('theme');
     if (currentTheme === 'dark') {
         document.documentElement.setAttribute('data-theme', 'dark');
         if (themeIcon) themeIcon.className = 'fas fa-sun';
+        if (logoImg) logoImg.src = darkLogoPath;
     }
 
     if (themeToggleBtn) {
@@ -211,10 +215,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.documentElement.removeAttribute('data-theme');
                 localStorage.setItem('theme', 'light');
                 if (themeIcon) themeIcon.className = 'fas fa-moon';
+                if (logoImg) logoImg.src = lightLogoPath;
             } else {
                 document.documentElement.setAttribute('data-theme', 'dark');
                 localStorage.setItem('theme', 'dark');
                 if (themeIcon) themeIcon.className = 'fas fa-sun';
+                if (logoImg) logoImg.src = darkLogoPath;
             }
         });
     }
