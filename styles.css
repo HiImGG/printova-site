@@ -95,6 +95,12 @@
   box-sizing: border-box;
 }
 
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
 body {
   font-family: var(--font-main);
   background-color: var(--bg-color);
@@ -831,6 +837,8 @@ footer {
     /* Fixed width for cards */
     scroll-snap-align: center;
     /* Snap to center */
+    scroll-snap-stop: always;
+    /* Force stop at each item */
     margin-right: 0;
   }
 
