@@ -778,6 +778,14 @@ footer {
     padding-top: 3rem;
   }
 
+  /* Smaller logo on mobile */
+  .logo img {
+    height: 30px;
+    width: auto;
+    /* Ensure aspect ratio */
+  }
+
+
 
   h1 {
     font-size: 2rem !important;
@@ -805,9 +813,27 @@ footer {
   }
 
   .gallery-grid {
-    grid-template-columns: 1fr;
-    /* Stack products */
+    display: flex;
+    /* Horizontal layout */
+    overflow-x: auto;
+    /* Allow scrolling */
+    scroll-snap-type: x mandatory;
+    /* Snap behavior */
+    gap: 1rem;
+    padding-bottom: 1rem;
+    /* Space for scrollbar */
+    -webkit-overflow-scrolling: touch;
+    /* Smooth scroll iOS */
   }
+
+  .product-card {
+    min-width: 280px;
+    /* Fixed width for cards */
+    scroll-snap-align: center;
+    /* Snap to center */
+    margin-right: 0;
+  }
+
 
   .footer-content {
     flex-direction: column;
