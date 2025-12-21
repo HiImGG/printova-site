@@ -71,6 +71,29 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Contact Highlight Interaction
+    const contactLinks = document.querySelectorAll('a[href="#iletisim"]');
+    contactLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            const footerContact = document.querySelector('.footer-contact-wrapper');
+            if (footerContact) {
+                // Remove class if it exists (reset animation)
+                footerContact.classList.remove('highlight-active');
+
+                // Force reflow to restart animation if clicked again quickly
+                void footerContact.offsetWidth;
+
+                // Add class to start animation
+                footerContact.classList.add('highlight-active');
+
+                // Remove class after animation ends (4s)
+                setTimeout(() => {
+                    footerContact.classList.remove('highlight-active');
+                }, 4000);
+            }
+        });
+    });
+
     // File Upload Handler
     const fileInput = document.getElementById('file-upload');
     const fileNameSpan = document.getElementById('file-name');
