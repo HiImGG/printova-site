@@ -619,6 +619,10 @@ nav {
 }
 
 /* Mobile Menu Button */
+.mobile-shop-btn {
+  display: none;
+}
+
 .mobile-menu-btn {
   display: none;
   flex-direction: column;
@@ -720,6 +724,25 @@ footer {
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
+  .mobile-shop-btn {
+    display: inline-flex !important;
+    margin-left: auto;
+    margin-right: 1rem;
+    padding: 0.4rem 1.2rem;
+    font-size: 0.85rem;
+  }
+
+  .nav-links .btn-shop {
+    display: none;
+  }
+
+  /* Reset margins for icons in mobile menu for proper vertical alignment */
+  .btn-instagram,
+  #theme-toggle {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
   .mobile-menu-btn {
     display: flex;
   }
@@ -750,8 +773,35 @@ footer {
     background-color: var(--card-bg);
   }
 
+  /* Fix spacing for hero title */
+  .hero-content {
+    padding-top: 5rem;
+  }
+
+
   h1 {
-    font-size: 2.5rem;
+    font-size: 1.75rem !important;
+    line-height: 1.2;
+  }
+
+  .hero p {
+    font-size: 1rem;
+    padding: 0 1rem;
+    /* Prevent edge-to-edge text */
+  }
+
+  /* Stack Hero Buttons */
+  .hero div[style*="display: flex"] {
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .hero .btn {
+    width: 100%;
+    /* Full width buttons on mobile */
   }
 
   .gallery-grid {
