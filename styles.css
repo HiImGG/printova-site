@@ -189,7 +189,7 @@ section {
 
 .btn-outline {
   border: 2px solid var(--text-primary);
-  background: transparent;
+  background: var(--white);
   color: var(--text-primary);
 }
 
@@ -204,13 +204,15 @@ section {
   box-shadow: 0 0 25px rgba(45, 64, 84, 0.3);
   /* Strong initial glow */
   transition: all 0.4s ease;
+  background-color: var(--white);
+  color: var(--text-primary);
 }
 
 .btn-fade-effect:hover {
   border-color: var(--text-primary) !important;
   box-shadow: 0 0 50px rgba(45, 64, 84, 0.6);
   /* Maximum fade effect */
-  background-color: transparent;
+  background-color: var(--white);
   color: var(--text-primary);
 }
 
@@ -395,7 +397,7 @@ nav {
   padding: 0.75rem 1.5rem;
   border: 1px solid var(--border-color);
   border-radius: 50px;
-  background: transparent;
+  background: var(--white);
   cursor: pointer;
   font-family: var(--font-main);
   font-size: 1rem;
@@ -801,7 +803,13 @@ footer {
   .hero p {
     font-size: 1rem;
     padding: 0 1rem;
+
     /* Prevent edge-to-edge text */
+  }
+
+  /* Increase spacing between hero and collection */
+  #koleksiyon {
+    padding-top: 6rem;
   }
 
   /* Stack Hero Buttons */
@@ -842,6 +850,13 @@ footer {
     margin-right: 0;
   }
 
+  /* Adjust Quote Section spacing on mobile */
+  .quote-section {
+    margin-top: 1rem;
+    padding-top: 4rem;
+    background: linear-gradient(to bottom, var(--bg-color), var(--card-bg) 1.5rem);
+    /* Tighter fade */
+  }
 
   .footer-content {
     flex-direction: column;
