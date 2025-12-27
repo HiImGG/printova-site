@@ -286,6 +286,12 @@ document.addEventListener('DOMContentLoaded', () => {
             if (nextBtn) nextBtn.style.display = 'none';
         }
 
+        // Preload images for instant switching
+        images.forEach(imgSrc => {
+            const img = new Image();
+            img.src = imgSrc;
+        });
+
         const updateButtons = () => {
             if (prevBtn) {
                 prevBtn.style.display = currentIndex === 0 ? 'none' : 'flex';
