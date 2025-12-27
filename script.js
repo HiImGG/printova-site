@@ -268,4 +268,100 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+    // Product Carousel Logic
+    const productCards = document.querySelectorAll('.product-card[data-images]');
+
+    productCards.forEach(card => {
+        const images = JSON.parse(card.getAttribute('data-images'));
+        let currentIndex = 0;
+        const imageContainer = card.querySelector('.image-container');
+
+        const prevBtn = card.querySelector('.prev-btn');
+        const nextBtn = card.querySelector('.next-btn');
+        let isAnimating = false;
+
+        // Hide buttons if only 1 image (though data-images implies multiples)
+        if (images.length <= 1) {
+            if (prevBtn) prevBtn.style.display = 'none';
+            if (nextBtn) nextBtn.style.display = 'none';
+        }
+
+        const updateButtons = () => {
+            if (prevBtn) {
+                prevBtn.style.display = currentIndex === 0 ? 'none' : 'flex';
+            }
+            if (nextBtn) {
+                nextBtn.style.display = currentIndex === images.length - 1 ? 'none' : 'flex';
+            }
+        };
+
+        // Initial check
+        updateButtons();
+
+        const updateImage = (direction) => {
+            if (isAnimating) return;
+            isAnimating = true;
+
+            const container = imageContainer || card;
+            const oldImg = container.querySelector('.product-image');
+            if (!oldImg) {
+                isAnimating = false;
+                return;
+            }
+
+            const newImg = document.createElement('img');
+            newImg.src = images[currentIndex];
+            newImg.className = 'product-image';
+            newImg.alt = oldImg.alt;
+
+            newImg.style.zIndex = '2';
+
+            container.appendChild(newImg);
+
+            if (direction === 'next') {
+                newImg.classList.add('slide-next-enter');
+                oldImg.classList.add('slide-next-exit');
+            } else {
+                newImg.classList.add('slide-prev-enter');
+                oldImg.classList.add('slide-prev-exit');
+            }
+
+            // Cleanup after animation
+            setTimeout(() => {
+                if (oldImg.parentNode) oldImg.parentNode.removeChild(oldImg);
+                newImg.classList.remove('slide-next-enter', 'slide-prev-enter');
+                newImg.style.position = ''; // Reset to static/relative flow
+                newImg.style.zIndex = '';
+                newImg.style.top = '';
+                newImg.style.left = '';
+                isAnimating = false; // Reset flag to allow next click
+            }, 400); // Match CSS animation duration
+
+            updateButtons();
+        };
+
+        if (prevBtn) {
+            prevBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                e.preventDefault();
+                // Disable wrap around for prev button if at start, though button should be hidden
+                if (currentIndex > 0) {
+                    currentIndex = (currentIndex - 1);
+                    updateImage('prev');
+                }
+            });
+        }
+
+        if (nextBtn) {
+            nextBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                e.preventDefault();
+                // Disable wrap around for next button
+                if (currentIndex < images.length - 1) {
+                    currentIndex = (currentIndex + 1);
+                    updateImage('next');
+                }
+            });
+        }
+    });
 });
